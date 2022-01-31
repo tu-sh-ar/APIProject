@@ -24,15 +24,9 @@ namespace APIProject.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Books>> Get()
-        {
-            return await _context.Books.ToListAsync();
-        }
+        public async Task<IEnumerable<Books>> Get() => await _context.Books.ToListAsync();
 
-        public async Task<Books> Get(int id)
-        {
-            return await _context.Books.FindAsync(id);
-        }
+        public async Task<Books> Get(int id) => await _context.Books.FindAsync(id);
 
         public async Task Update(Books book)
         {

@@ -19,9 +19,9 @@ namespace APIProject.Controllers
         }
 
         [HttpGet("{id}")] //identifies HttpGet methods
-        public async Task<ActionResult<Books>> GetBooks([FromBody]Books book)// id is a URI
+        public async Task<ActionResult<Books>> GetBooks(int id)// id is a URI
         {
-            return await _bookRepository.Get(book.Id);
+            return await _bookRepository.Get(id);
         }
 
         [HttpPost("")] //identifies HttpPost methods
@@ -36,12 +36,16 @@ namespace APIProject.Controllers
         public async Task<ActionResult<Books>> PutBooks(int id,[FromBody]Books book)
         {
             if(id != book.Id) {
-                return BadRequest();//returns 404 status code
-                
-                    
+                return BadRequest();//returns 404 status 
             }
             await _bookRepository.Update(book);
             return NoContent();// returns 204 status code
+        }
+        [HttpDelete("id")]
+        public async Task<ActionResult> DeleteBooks(int id)
+        {
+            await _bookRepository.Delete(id);
+            return NoContent();
         }
     }
 }
