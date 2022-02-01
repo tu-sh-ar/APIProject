@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(); //imp
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -17,11 +17,11 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwagger();  //registers Swagger middlewaare for DI
+    app.UseSwaggerUI();//registers Swagger UI middleware for DI
 }
 
-app.UseHttpsRedirection();//Adds middleware to redirect http to https
+//app.UseHttpsRedirection();//Adds middleware to redirect http to https
 
 app.UseAuthorization();//Routing Concept
 

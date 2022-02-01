@@ -22,6 +22,7 @@ namespace APIProject.Repository
             var bookToDelete = await _context.Books.FindAsync(id);
             _context.Books.Remove(bookToDelete);
             await _context.SaveChangesAsync();
+            
         }
 
         public async Task<IEnumerable<Books>> Get() => await _context.Books.ToListAsync();
